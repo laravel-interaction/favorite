@@ -1,21 +1,110 @@
-# Package Skeleton Laravel
+# Laravel Favorite
+
+User favorite/unfavorite behaviour for Laravel.
+
 <p align="center">
-<a href="https://github.com/zingimmick/package-skeleton-laravel/actions"><img src="https://github.com/zingimmick/package-skeleton-laravel/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://codecov.io/gh/zingimmick/package-skeleton-laravel"><img src="https://codecov.io/gh/zingimmick/package-skeleton-laravel/branch/master/graph/badge.svg" alt="Code Coverage" /></a>
-<a href="https://packagist.org/packages/zing/package-skeleton-laravel"><img src="https://poser.pugx.org/zing/package-skeleton-laravel/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/zing/package-skeleton-laravel"><img src="https://poser.pugx.org/zing/package-skeleton-laravel/downloads" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/zing/package-skeleton-laravel"><img src="https://poser.pugx.org/zing/package-skeleton-laravel/v/unstable.svg" alt="Latest Unstable Version"></a>
-<a href="https://packagist.org/packages/zing/package-skeleton-laravel"><img src="https://poser.pugx.org/zing/package-skeleton-laravel/license" alt="License"></a>
+<a href="https://github.com/laravel-interaction/favorite/actions"><img src="https://github.com/laravel-interaction/favorite/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://codecov.io/gh/laravel-interaction/favorite"><img src="https://codecov.io/gh/laravel-interaction/favorite/branch/master/graph/badge.svg" alt="Code Coverage" /></a>
+<a href="https://packagist.org/packages/laravel-interaction/favorite"><img src="https://poser.pugx.org/laravel-interaction/favorite/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel-interaction/favorite"><img src="https://poser.pugx.org/laravel-interaction/favorite/downloads" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel-interaction/favorite"><img src="https://poser.pugx.org/laravel-interaction/favorite/v/unstable.svg" alt="Latest Unstable Version"></a>
+<a href="https://packagist.org/packages/laravel-interaction/favorite"><img src="https://poser.pugx.org/laravel-interaction/favorite/license" alt="License"></a>
+<a href="https://codeclimate.com/github/laravel-interaction/favorite/maintainability"><img src="https://api.codeclimate.com/v1/badges/00926e0d1ffb6e36f097/maintainability" alt="Code Climate" /></a>
 </p>
 
 > **Requires [PHP 7.2.0+](https://php.net/releases/)**
 
-Require Package Skeleton Laravel using [Composer](https://getcomposer.org):
+Require Laravel Favorite using [Composer](https://getcomposer.org):
 
 ```bash
-composer create-project zing/package-skeleton-laravel --prefer-source laravel-package
+composer require laravel-interaction/favorite
 ```
+
+## Usage
+
+### Setup Favoriter
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelInteraction\Favorite\Concerns\Favoriter;
+
+class User extends Model
+{
+    use Favoriter;
+}
+```
+
+### Setup Favoriteable
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use LaravelInteraction\Favorite\Concerns\Favoriteable;
+
+class Channel extends Model
+{
+    use Favoriteable;
+}
+```
+
+### Favoriter
+
+```php
+use LaravelInteraction\Favorite\Tests\Models\Channel;
+/** @var \LaravelInteraction\Favorite\Tests\Models\User $user */
+/** @var \LaravelInteraction\Favorite\Tests\Models\Channel $channel */
+// Favorite to Favoriteable
+$user->favorite($channel);
+$user->unfavorite($channel);
+$user->toggleFavorite($channel);
+
+// Compare Favoriteable
+$user->hasFavorited($channel);
+$user->hasNotFavorited($channel);
+
+// Get favorited info
+$user->favoriterFavorites()->count(); 
+
+// with type
+$user->favoriterFavorites()->withType(Channel::class)->count(); 
+
+// get favorited channels
+Channel::query()->whereFavoritedBy($user)->get();
+
+// get favorited channels doesnt favorited
+Channel::query()->whereNotFavoritedBy($user)->get();
+```
+
+### Favoriteable
+
+```php
+use LaravelInteraction\Favorite\Tests\Models\User;
+use LaravelInteraction\Favorite\Tests\Models\Channel;
+/** @var \LaravelInteraction\Favorite\Tests\Models\User $user */
+/** @var \LaravelInteraction\Favorite\Tests\Models\Channel $channel */
+// Compare Favoriter
+$channel->isFavoritedBy($user); 
+$channel->isNotFavoritedBy($user);
+// Get favoriters info
+$channel->favoriters->each(function (User $user){
+    echo $user->getKey();
+});
+
+$channels = Channel::query()->withCount('favoriters')->get();
+$channels->each(function (Channel $channel){
+    echo $channel->favoriters()->count(); // 1100
+    echo $channel->favoriters_count; // "1100"
+    echo $channel->favoritersCount(); // 1100
+    echo $channel->favoritersCountForHumans(); // "1.1K"
+});
+```
+
+### Events
+
+| Event | Fired |
+| --- | --- |
+| `LaravelInteraction\Favorite\Events\Favorited` | When an object get favorited. |
+| `LaravelInteraction\Favorite\Events\Unfavorited` | When an object get unfavorited. |
 
 ## License
 
-Package Skeleton Laravel is an open-sourced software licensed under the [MIT license](LICENSE).
+Laravel Favorite is an open-sourced software licensed under the [MIT license](LICENSE).

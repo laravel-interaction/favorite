@@ -1,7 +1,7 @@
 {
-    "name": "zing/package-skeleton-laravel",
-    "description": "A skeleton repository for Laravel Packages",
-    "keywords": ["laravel", "package", "skeleton"],
+    "name": "laravel-interaction/favorite",
+    "description": "User favorite/unfavorite behaviour for Laravel.",
+    "keywords": ["laravel", "favorite", "favorite"],
     "license": "MIT",
     "authors": [
         {
@@ -15,59 +15,34 @@
     },
     "require": {
         "php": "^7.2 || ^8.0",
-        "illuminate/support": "^6.0 || ^7.0 || ^8.0"
+        "illuminate/database": "^6.3 || ^7.0 || ^8.0",
+        "illuminate/support": "^6.0 || ^7.0 || ^8.0",
+        "laravel-interaction/support": "^0.3"
     },
     "require-dev": {
         "mockery/mockery": "~1.3.3 || ^1.4.2",
-        "nunomaduro/larastan": "^0.7.2",
+        "moontoast/math": "^1.0",
         "orchestra/testbench": "^4.0 || ^5.0 || ^6.0",
-        "phpunit/phpunit": "^8.0,<8.5.12 || ^9.3.3",
-        "symplify/changelog-linker": "^8.3 || ^9.2",
-        "zing/coding-standard": "^2.6 || ^3.4"
+        "phpunit/phpunit": "^8.0,<8.5.12 || ^9.3.3"
     },
     "autoload": {
         "psr-4": {
-            "Zing\\Skeleton\\": "src"
+            "LaravelInteraction\\Favorite\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Zing\\Skeleton\\Tests\\": "tests"
+            "LaravelInteraction\\Favorite\\Tests\\": "tests"
         }
     },
-    "scripts": {
-        "lint:rector": "@fix:rector --dry-run",
-        "lint:ecs": "ecs check --ansi",
-        "lint:phpstan": "phpstan analyse --ansi",
-        "fix:rector": "rector process --ansi",
-        "fix:ecs": "@lint:ecs --fix",
-        "test:phpunit": "phpunit --colors=always",
-        "lint": [
-            "@lint:rector",
-            "@lint:ecs",
-            "@lint:phpstan"
-        ],
-        "fix": [
-            "@fix:rector",
-            "@fix:ecs"
-        ],
-        "test": [
-            "@test:phpunit"
-        ],
-        "changelog": [
-            "changelog-linker dump-merges --ansi",
-            "changelog-linker link --ansi",
-            "changelog-linker cleanup --ansi"
-        ]
-    },
     "extra": {
+        "branch-alias": {
+            "dev-master": "0.3-dev"
+        },
         "laravel": {
             "providers": [
-                "Zing\\Skeleton\\SkeletonServiceProvider"
-            ],
-            "aliases": {
-                "Skeleton": "Zing\\Skeleton\\Facades\\Skeleton"
-            }
+                "LaravelInteraction\\Favorite\\FavoriteServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",
