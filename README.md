@@ -3,13 +3,10 @@
 User favorite/unfavorite behaviour for Laravel.
 
 <p align="center">
-<a href="https://github.com/laravel-interaction/favorite/actions"><img src="https://github.com/laravel-interaction/favorite/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://codecov.io/gh/laravel-interaction/favorite"><img src="https://codecov.io/gh/laravel-interaction/favorite/branch/master/graph/badge.svg" alt="Code Coverage" /></a>
 <a href="https://packagist.org/packages/laravel-interaction/favorite"><img src="https://poser.pugx.org/laravel-interaction/favorite/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel-interaction/favorite"><img src="https://poser.pugx.org/laravel-interaction/favorite/downloads" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/laravel-interaction/favorite"><img src="https://poser.pugx.org/laravel-interaction/favorite/v/unstable.svg" alt="Latest Unstable Version"></a>
 <a href="https://packagist.org/packages/laravel-interaction/favorite"><img src="https://poser.pugx.org/laravel-interaction/favorite/license" alt="License"></a>
-<a href="https://codeclimate.com/github/laravel-interaction/favorite/maintainability"><img src="https://api.codeclimate.com/v1/badges/00926e0d1ffb6e36f097/maintainability" alt="Code Climate" /></a>
 </p>
 
 > **Requires [PHP 7.2.0+](https://php.net/releases/)**
