@@ -1,7 +1,7 @@
 {
     "name": "laravel-interaction/favorite",
     "description": "User favorite/unfavorite behaviour for Laravel.",
-    "keywords": ["laravel", "favorite", "favorite"],
+    "keywords": ["laravel", "favorites", "favorite"],
     "license": "MIT",
     "authors": [
         {
