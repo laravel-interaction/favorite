@@ -45,7 +45,11 @@ class Favorite extends MorphPivot
 
     public function getIncrementing(): bool
     {
-        return $this->uuids() ? true : parent::getIncrementing();
+        if ($this->uuids()) {
+            return true;
+        }
+
+        return parent::getIncrementing();
     }
 
     public function getKeyName(): string
