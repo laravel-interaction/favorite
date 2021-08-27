@@ -26,11 +26,6 @@ trait Favoriteable
         return ! $this->isFavoritedBy($user);
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Model $user
-     *
-     * @return bool
-     */
     public function isFavoritedBy(Model $user): bool
     {
         if (! is_a($user, config('favorite.models.user'))) {
@@ -69,17 +64,11 @@ trait Favoriteable
         );
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
-     */
     public function favoriteableFavorites(): MorphMany
     {
         return $this->morphMany(config('favorite.models.favorite'), 'favoriteable');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
     public function favoriters(): BelongsToMany
     {
         return $this->morphToMany(

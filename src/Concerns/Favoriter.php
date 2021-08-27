@@ -20,11 +20,6 @@ trait Favoriter
         return ! $this->hasFavorited($object);
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Model $object
-     *
-     * @return bool
-     */
     public function hasFavorited(Model $object): bool
     {
         return ($this->relationLoaded(
@@ -35,11 +30,6 @@ trait Favoriter
             ->count() > 0;
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Model $object
-     *
-     * @return \LaravelInteraction\Favorite\Favorite
-     */
     public function favorite(Model $object): Favorite
     {
         $attributes = [
@@ -60,9 +50,6 @@ trait Favoriter
             });
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function favoriterFavorites(): HasMany
     {
         return $this->hasMany(
@@ -73,8 +60,6 @@ trait Favoriter
     }
 
     /**
-     * @param \Illuminate\Database\Eloquent\Model $object
-     *
      * @return bool|\LaravelInteraction\Favorite\Favorite
      */
     public function toggleFavorite(Model $object)
@@ -82,11 +67,6 @@ trait Favoriter
         return $this->hasFavorited($object) ? $this->unfavorite($object) : $this->favorite($object);
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Model $object
-     *
-     * @return bool
-     */
     public function unfavorite(Model $object): bool
     {
         $hasNotFavorited = $this->hasNotFavorited($object);
@@ -102,11 +82,6 @@ trait Favoriter
             ->detach($object->getKey());
     }
 
-    /**
-     * @param string $class
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
-     */
     protected function favoritedItems(string $class): MorphToMany
     {
         return $this->morphedByMany(
