@@ -39,7 +39,7 @@ class TestCase extends BaseTestCase
             [
                 'database.default' => 'testing',
                 'favorite.models.user' => User::class,
-                'favorite.uuids' => true,
+                'favorite.uuids' => false,
             ]
         );
     }
