@@ -73,6 +73,7 @@ trait Favoriter
         if ($hasNotFavorited) {
             return true;
         }
+
         $favoriterFavoritesLoaded = $this->relationLoaded('favoriterFavorites');
         if ($favoriterFavoritesLoaded) {
             $this->unsetRelation('favoriterFavorites');

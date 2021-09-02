@@ -31,6 +31,7 @@ trait Favoriteable
         if (! is_a($user, config('favorite.models.user'))) {
             return false;
         }
+
         $favoritersLoaded = $this->relationLoaded('favoriters');
 
         if ($favoritersLoaded) {
