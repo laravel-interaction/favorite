@@ -9,5 +9,8 @@ use LaravelInteraction\Support\InteractionServiceProvider;
 
 class FavoriteServiceProvider extends InteractionServiceProvider
 {
+    /**
+     * @var string
+     */
     protected $interaction = InteractionList::FAVORITE;
 }

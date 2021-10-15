@@ -10,7 +10,10 @@ use LaravelInteraction\Favorite\Tests\Models\Channel;
 use LaravelInteraction\Favorite\Tests\Models\User;
 use LaravelInteraction\Favorite\Tests\TestCase;
 
-class UnfavoritedTest extends TestCase
+/**
+ * @internal
+ */
+final class UnfavoritedTest extends TestCase
 {
     public function testOnce(): void
     {

@@ -10,7 +10,7 @@ use LaravelInteraction\Favorite\FavoriteServiceProvider;
 use LaravelInteraction\Favorite\Tests\Models\User;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
-class TestCase extends BaseTestCase
+abstract class TestCase extends BaseTestCase
 {
     protected function setUp(): void
     {

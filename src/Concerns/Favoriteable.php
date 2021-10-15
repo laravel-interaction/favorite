@@ -49,7 +49,7 @@ trait Favoriteable
     {
         return $query->whereDoesntHave(
             'favoriters',
-            function (Builder $query) use ($user) {
+            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -59,7 +59,7 @@ trait Favoriteable
     {
         return $query->whereHas(
             'favoriters',
-            function (Builder $query) use ($user) {
+            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -92,8 +92,11 @@ trait Favoriteable
         return (int) $this->favoriters_count;
     }
 
-    public function favoritersCountForHumans($precision = 1, $mode = PHP_ROUND_HALF_UP, $divisors = null): string
-    {
+    public function favoritersCountForHumans(
+        int $precision = 1,
+        int $mode = PHP_ROUND_HALF_UP,
+        $divisors = null
+    ): string {
         return Interaction::numberForHumans(
             $this->favoritersCount(),
             $precision,

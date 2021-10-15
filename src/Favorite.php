@@ -25,6 +25,9 @@ use LaravelInteraction\Favorite\Events\Unfavorited;
  */
 class Favorite extends MorphPivot
 {
+    /**
+     * @var array<string, class-string<\LaravelInteraction\Favorite\Events\Favorited>>|array<string, class-string<\LaravelInteraction\Favorite\Events\Unfavorited>>
+     */
     protected $dispatchesEvents = [
         'created' => Favorited::class,
         'deleted' => Unfavorited::class,
@@ -43,6 +46,9 @@ class Favorite extends MorphPivot
         );
     }
 
+    /**
+     * @var bool
+     */
     public $incrementing = true;
 
     public function getIncrementing(): bool

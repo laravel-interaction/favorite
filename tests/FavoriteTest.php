@@ -9,22 +9,25 @@ use LaravelInteraction\Favorite\Favorite;
 use LaravelInteraction\Favorite\Tests\Models\Channel;
 use LaravelInteraction\Favorite\Tests\Models\User;
 
-class FavoriteTest extends TestCase
+/**
+ * @internal
+ */
+final class FavoriteTest extends TestCase
 {
     /**
      * @var \LaravelInteraction\Favorite\Tests\Models\User
      */
-    protected $user;
+    private $user;
 
     /**
      * @var \LaravelInteraction\Favorite\Tests\Models\Channel
      */
-    protected $channel;
+    private $channel;
 
     /**
      * @var \LaravelInteraction\Favorite\Favorite
      */
-    protected $favorite;
+    private $favorite;
 
     protected function setUp(): void
     {
