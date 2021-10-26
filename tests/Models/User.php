@@ -14,6 +14,5 @@ use LaravelInteraction\Favorite\Concerns\Favoriter;
 class User extends Model
 {
     use Favoriter;
-
     use Favoriteable;
 }
