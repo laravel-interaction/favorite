@@ -49,7 +49,7 @@ trait Favoriteable
     {
         return $query->whereDoesntHave(
             'favoriters',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -59,7 +59,7 @@ trait Favoriteable
     {
         return $query->whereHas(
             'favoriters',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );

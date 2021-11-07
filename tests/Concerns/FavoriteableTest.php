@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelInteraction\Favorite\Tests\Concerns;
 
+use Iterator;
 use LaravelInteraction\Favorite\Tests\Models\Channel;
 use LaravelInteraction\Favorite\Tests\Models\User;
 use LaravelInteraction\Favorite\Tests\TestCase;
@@ -16,7 +17,7 @@ final class FavoriteableTest extends TestCase
     /**
      * @return \Iterator<array<class-string<\LaravelInteraction\Favorite\Tests\Models\Channel|\LaravelInteraction\Favorite\Tests\Models\User>>>
      */
-    public function provideModelClasses(): \Iterator
+    public function provideModelClasses(): Iterator
     {
         yield [Channel::class];
         yield [User::class];
