@@ -92,6 +92,9 @@ trait Favoriteable
         return (int) $this->favoriters_count;
     }
 
+    /**
+     * @param array<int, string>|null $divisors
+     */
     public function favoritersCountForHumans(
         int $precision = 1,
         int $mode = PHP_ROUND_HALF_UP,
