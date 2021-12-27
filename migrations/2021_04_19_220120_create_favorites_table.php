@@ -17,10 +17,14 @@ class CreateFavoritesTable extends Migration
             config('favorite.table_names.favorites'),
             function (Blueprint $table): void {
                 config('favorite.uuids') ? $table->uuid('uuid') : $table->bigIncrements('id');
-                $table->unsignedBigInteger(config('favorite.column_names.user_foreign_key'))->index()->comment('user_id');
+                $table->unsignedBigInteger(config('favorite.column_names.user_foreign_key'))
+                    ->index()
+                    ->comment('user_id');
                 $table->morphs('favoriteable');
                 $table->timestamps();
-                $table->unique([config('favorite.column_names.user_foreign_key'), 'favoriteable_type', 'favoriteable_id']);
+                $table->unique(
+                    [config('favorite.column_names.user_foreign_key'), 'favoriteable_type', 'favoriteable_id']
+                );
             }
         );
     }
