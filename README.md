@@ -9,7 +9,7 @@ User favorite/unfavorite behaviour for Laravel.
 <a href="https://packagist.org/packages/laravel-interaction/favorite"><img src="https://poser.pugx.org/laravel-interaction/favorite/license" alt="License"></a>
 </p>
 
-> **Requires [PHP 7.2.0+](https://php.net/releases/)**
+> **Requires [PHP 7.3+](https://php.net/releases/)**
 
 Require Laravel Favorite using [Composer](https://getcomposer.org):
 
