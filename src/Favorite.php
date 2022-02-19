@@ -70,7 +70,7 @@ class Favorite extends MorphPivot
         return $this->uuids() ? 'string' : parent::getKeyType();
     }
 
-    public function getTable()
+    public function getTable(): string
     {
         return config('favorite.table_names.favorites') ?: parent::getTable();
     }
