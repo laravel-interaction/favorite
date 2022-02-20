@@ -3,6 +3,11 @@
     "description": "User favorite/unfavorite behaviour for Laravel.",
     "keywords": ["laravel", "favorites", "favorite"],
     "license": "MIT",
+    "homepage": "https://github.com/laravel-interaction/favorite",
+    "support": {
+        "issues": "https://github.com/laravel-interaction/favorite/issues",
+        "source": "https://github.com/laravel-interaction/favorite"
+    },
     "authors": [
         {
             "name": "zingimmick",
