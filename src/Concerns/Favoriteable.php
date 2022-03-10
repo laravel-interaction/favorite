@@ -67,7 +67,7 @@ trait Favoriteable
 
     public function favoriteableFavorites(): MorphMany
     {
-        return $this->morphMany(config('favorite.models.favorite'), 'favoriteable');
+        return $this->morphMany(config('favorite.models.pivot'), 'favoriteable');
     }
 
     public function favoriters(): BelongsToMany
@@ -75,7 +75,7 @@ trait Favoriteable
         return $this->morphToMany(
             config('favorite.models.user'),
             'favoriteable',
-            config('favorite.models.favorite'),
+            config('favorite.models.pivot'),
             null,
             config('favorite.column_names.user_foreign_key')
         )->withTimestamps();

@@ -9,10 +9,10 @@ return [
     'uuids' => false,
     'models' => [
         'user' => \App\User::class,
-        'favorite' => Favorite::class,
+        'pivot' => Favorite::class,
     ],
     'table_names' => [
-        'favorites' => 'favorites',
+        'pivot' => 'favorites',
     ],
     'column_names' => [
         'user_foreign_key' => 'user_id',

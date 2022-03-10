@@ -72,7 +72,7 @@ class Favorite extends MorphPivot
 
     public function getTable(): string
     {
-        return config('favorite.table_names.favorites') ?: parent::getTable();
+        return config('favorite.table_names.pivot') ?: parent::getTable();
     }
 
     public function isFavoritedBy(Model $user): bool

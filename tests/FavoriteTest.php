@@ -53,7 +53,7 @@ final class FavoriteTest extends TestCase
 
     public function testGetTable(): void
     {
-        self::assertSame(config('favorite.table_names.favorites'), $this->favorite->getTable());
+        self::assertSame(config('favorite.table_names.pivot'), $this->favorite->getTable());
     }
 
     public function testFavoriter(): void
