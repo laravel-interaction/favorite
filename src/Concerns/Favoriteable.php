@@ -93,6 +93,8 @@ trait Favoriteable
     }
 
     /**
+     * @phpstan-param 1|2|3|4 $mode
+     *
      * @param array<int, string>|null $divisors
      */
     public function favoritersCountForHumans(
