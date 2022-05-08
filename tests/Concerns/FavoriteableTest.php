@@ -29,7 +29,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
-    public function testFavorites($modelClass): void
+    public function testFavorites(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -43,7 +43,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
-    public function testFavoritersCount($modelClass): void
+    public function testFavoritersCount(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -60,7 +60,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
-    public function testFavoritersCountForHumans($modelClass): void
+    public function testFavoritersCountForHumans(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -73,7 +73,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
-    public function testIsFavoritedBy($modelClass): void
+    public function testIsFavoritedBy(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -92,7 +92,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
-    public function testIsNotFavoritedBy($modelClass): void
+    public function testIsNotFavoritedBy(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -111,7 +111,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
-    public function testFavoriters($modelClass): void
+    public function testFavoriters(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -126,7 +126,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
-    public function testScopeWhereFavoritedBy($modelClass): void
+    public function testScopeWhereFavoritedBy(string $modelClass): void
     {
         $user = User::query()->create();
         $other = User::query()->create();
@@ -141,7 +141,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
-    public function testScopeWhereNotFavoritedBy($modelClass): void
+    public function testScopeWhereNotFavoritedBy(string $modelClass): void
     {
         $user = User::query()->create();
         $other = User::query()->create();
