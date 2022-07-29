@@ -15,7 +15,7 @@ class CreateFavoritesTable extends Migration
     {
         Schema::create(
             config('favorite.table_names.pivot'),
-            function (Blueprint $table): void {
+            static function (Blueprint $table): void {
                 config('favorite.uuids') ? $table->uuid('uuid') : $table->bigIncrements('id');
                 $table->unsignedBigInteger(config('favorite.column_names.user_foreign_key'))
                     ->index()
