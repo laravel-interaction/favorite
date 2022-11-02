@@ -8,13 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Unfavorited
 {
-    /**
-     * @var \Illuminate\Database\Eloquent\Model
-     */
-    public $favorite;
-
-    public function __construct(Model $favorite)
+    public function __construct(public Model $model)
     {
-        $this->favorite = $favorite;
     }
 }

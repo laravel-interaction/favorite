@@ -55,10 +55,7 @@ trait Favoriter
         return $this->hasMany(config('favorite.models.pivot'), config('favorite.column_names.user_foreign_key'));
     }
 
-    /**
-     * @return bool|\LaravelInteraction\Favorite\Favorite
-     */
-    public function toggleFavorite(Model $object)
+    public function toggleFavorite(Model $object): bool|Favorite
     {
         return $this->hasFavorited($object) ? $this->unfavorite($object) : $this->favorite($object);
     }
@@ -75,7 +72,7 @@ trait Favoriter
             $this->unsetRelation('favoriterFavorites');
         }
 
-        return (bool) $this->favoritedItems(\get_class($object))
+        return (bool) $this->favoritedItems($object::class)
             ->detach($object->getKey());
     }
 
