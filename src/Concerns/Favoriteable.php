@@ -10,8 +10,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use LaravelInteraction\Support\Interaction;
 
-use function is_a;
-
 /**
  * @property-read \Illuminate\Database\Eloquent\Collection|\LaravelInteraction\Favorite\Favorite[] $favoriteableFavorites
  * @property-read \Illuminate\Database\Eloquent\Collection|\LaravelInteraction\Favorite\Concerns\Favoriter[] $favoriters
