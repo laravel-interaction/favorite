@@ -16,7 +16,7 @@ final class FavoriteableTest extends TestCase
     /**
      * @return \Iterator<array<class-string<\LaravelInteraction\Favorite\Tests\Models\Channel|\LaravelInteraction\Favorite\Tests\Models\User>>>
      */
-    public function provideModelClasses(): \Iterator
+    public static function provideModelClasses(): \Iterator
     {
         yield [Channel::class];
 
