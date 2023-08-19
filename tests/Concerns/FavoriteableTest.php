@@ -33,8 +33,8 @@ final class FavoriteableTest extends TestCase
         $user = User::query()->create();
         $model = $modelClass::query()->create();
         $user->favorite($model);
-        self::assertSame(1, $model->favoriteableFavorites()->count());
-        self::assertSame(1, $model->favoriteableFavorites->count());
+        $this->assertSame(1, $model->favoriteableFavorites()->count());
+        $this->assertSame(1, $model->favoriteableFavorites->count());
     }
 
     /**
@@ -47,11 +47,11 @@ final class FavoriteableTest extends TestCase
         $user = User::query()->create();
         $model = $modelClass::query()->create();
         $user->favorite($model);
-        self::assertSame(1, $model->favoritersCount());
+        $this->assertSame(1, $model->favoritersCount());
         $user->unfavorite($model);
-        self::assertSame(1, $model->favoritersCount());
+        $this->assertSame(1, $model->favoritersCount());
         $model->loadCount('favoriters');
-        self::assertSame(0, $model->favoritersCount());
+        $this->assertSame(0, $model->favoritersCount());
     }
 
     /**
@@ -64,7 +64,7 @@ final class FavoriteableTest extends TestCase
         $user = User::query()->create();
         $model = $modelClass::query()->create();
         $user->favorite($model);
-        self::assertSame('1', $model->favoritersCountForHumans());
+        $this->assertSame('1', $model->favoritersCountForHumans());
     }
 
     /**
@@ -76,14 +76,14 @@ final class FavoriteableTest extends TestCase
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
-        self::assertFalse($model->isFavoritedBy($model));
+        $this->assertFalse($model->isFavoritedBy($model));
         $user->favorite($model);
-        self::assertTrue($model->isFavoritedBy($user));
+        $this->assertTrue($model->isFavoritedBy($user));
         $model->load('favoriters');
         $user->unfavorite($model);
-        self::assertTrue($model->isFavoritedBy($user));
+        $this->assertTrue($model->isFavoritedBy($user));
         $model->load('favoriters');
-        self::assertFalse($model->isFavoritedBy($user));
+        $this->assertFalse($model->isFavoritedBy($user));
     }
 
     /**
@@ -95,14 +95,14 @@ final class FavoriteableTest extends TestCase
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
-        self::assertTrue($model->isNotFavoritedBy($model));
+        $this->assertTrue($model->isNotFavoritedBy($model));
         $user->favorite($model);
-        self::assertFalse($model->isNotFavoritedBy($user));
+        $this->assertFalse($model->isNotFavoritedBy($user));
         $model->load('favoriters');
         $user->unfavorite($model);
-        self::assertFalse($model->isNotFavoritedBy($user));
+        $this->assertFalse($model->isNotFavoritedBy($user));
         $model->load('favoriters');
-        self::assertTrue($model->isNotFavoritedBy($user));
+        $this->assertTrue($model->isNotFavoritedBy($user));
     }
 
     /**
@@ -115,9 +115,9 @@ final class FavoriteableTest extends TestCase
         $user = User::query()->create();
         $model = $modelClass::query()->create();
         $user->favorite($model);
-        self::assertSame(1, $model->favoriters()->count());
+        $this->assertSame(1, $model->favoriters()->count());
         $user->unfavorite($model);
-        self::assertSame(0, $model->favoriters()->count());
+        $this->assertSame(0, $model->favoriters()->count());
     }
 
     /**
@@ -131,8 +131,8 @@ final class FavoriteableTest extends TestCase
         $other = User::query()->create();
         $model = $modelClass::query()->create();
         $user->favorite($model);
-        self::assertSame(1, $modelClass::query()->whereFavoritedBy($user)->count());
-        self::assertSame(0, $modelClass::query()->whereFavoritedBy($other)->count());
+        $this->assertSame(1, $modelClass::query()->whereFavoritedBy($user)->count());
+        $this->assertSame(0, $modelClass::query()->whereFavoritedBy($other)->count());
     }
 
     /**
@@ -146,10 +146,10 @@ final class FavoriteableTest extends TestCase
         $other = User::query()->create();
         $model = $modelClass::query()->create();
         $user->favorite($model);
-        self::assertSame(
+        $this->assertSame(
             $modelClass::query()->whereKeyNot($model->getKey())->count(),
             $modelClass::query()->whereNotFavoritedBy($user)->count()
         );
-        self::assertSame($modelClass::query()->count(), $modelClass::query()->whereNotFavoritedBy($other)->count());
+        $this->assertSame($modelClass::query()->count(), $modelClass::query()->whereNotFavoritedBy($other)->count());
     }
 }

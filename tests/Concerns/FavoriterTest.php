@@ -86,8 +86,8 @@ final class FavoriterTest extends TestCase
         $user = User::query()->create();
         $channel = Channel::query()->create();
         $user->toggleFavorite($channel);
-        self::assertSame(1, $user->favoriterFavorites()->count());
-        self::assertSame(1, $user->favoriterFavorites->count());
+        $this->assertSame(1, $user->favoriterFavorites()->count());
+        $this->assertSame(1, $user->favoriterFavorites->count());
     }
 
     public function testHasFavorited(): void
@@ -95,10 +95,10 @@ final class FavoriterTest extends TestCase
         $user = User::query()->create();
         $channel = Channel::query()->create();
         $user->toggleFavorite($channel);
-        self::assertTrue($user->hasFavorited($channel));
+        $this->assertTrue($user->hasFavorited($channel));
         $user->toggleFavorite($channel);
         $user->load('favoriterFavorites');
-        self::assertFalse($user->hasFavorited($channel));
+        $this->assertFalse($user->hasFavorited($channel));
     }
 
     public function testHasNotFavorited(): void
@@ -106,8 +106,8 @@ final class FavoriterTest extends TestCase
         $user = User::query()->create();
         $channel = Channel::query()->create();
         $user->toggleFavorite($channel);
-        self::assertFalse($user->hasNotFavorited($channel));
+        $this->assertFalse($user->hasNotFavorited($channel));
         $user->toggleFavorite($channel);
-        self::assertTrue($user->hasNotFavorited($channel));
+        $this->assertTrue($user->hasNotFavorited($channel));
     }
 }
