@@ -14,11 +14,11 @@ use LaravelInteraction\Favorite\Tests\Models\User;
  */
 final class FavoriteTest extends TestCase
 {
-    private \LaravelInteraction\Favorite\Tests\Models\User $user;
+    private User $user;
 
-    private \LaravelInteraction\Favorite\Tests\Models\Channel $channel;
+    private Channel $channel;
 
-    private \LaravelInteraction\Favorite\Favorite $favorite;
+    private Favorite $favorite;
 
     protected function setUp(): void
     {
