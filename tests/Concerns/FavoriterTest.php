@@ -87,7 +87,7 @@ final class FavoriterTest extends TestCase
         $channel = Channel::query()->create();
         $user->toggleFavorite($channel);
         $this->assertSame(1, $user->favoriterFavorites()->count());
-        $this->assertSame(1, $user->favoriterFavorites->count());
+        $this->assertCount(1, $user->favoriterFavorites);
     }
 
     public function testHasFavorited(): void

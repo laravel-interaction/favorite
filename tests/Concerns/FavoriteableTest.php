@@ -34,7 +34,7 @@ final class FavoriteableTest extends TestCase
         $model = $modelClass::query()->create();
         $user->favorite($model);
         $this->assertSame(1, $model->favoriteableFavorites()->count());
-        $this->assertSame(1, $model->favoriteableFavorites->count());
+        $this->assertCount(1, $model->favoriteableFavorites);
     }
 
     /**
