@@ -7,6 +7,7 @@ namespace LaravelInteraction\Favorite\Tests\Concerns;
 use LaravelInteraction\Favorite\Tests\Models\Channel;
 use LaravelInteraction\Favorite\Tests\Models\User;
 use LaravelInteraction\Favorite\Tests\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @internal
@@ -14,20 +15,11 @@ use LaravelInteraction\Favorite\Tests\TestCase;
 final class FavoriteableTest extends TestCase
 {
     /**
-     * @return \Iterator<array<class-string<\LaravelInteraction\Favorite\Tests\Models\Channel|\LaravelInteraction\Favorite\Tests\Models\User>>>
-     */
-    public static function provideModelClasses(): \Iterator
-    {
-        yield [Channel::class];
-
-        yield [User::class];
-    }
-
-    /**
      * @dataProvider provideModelClasses
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testFavorites(string $modelClass): void
     {
         $user = User::query()->create();
@@ -42,6 +34,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testFavoritersCount(string $modelClass): void
     {
         $user = User::query()->create();
@@ -59,6 +52,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testFavoritersCountForHumans(string $modelClass): void
     {
         $user = User::query()->create();
@@ -72,6 +66,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testIsFavoritedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -91,6 +86,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testIsNotFavoritedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -110,6 +106,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testFavoriters(string $modelClass): void
     {
         $user = User::query()->create();
@@ -125,6 +122,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testScopeWhereFavoritedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -140,6 +138,7 @@ final class FavoriteableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Favorite\Tests\Models\User|\LaravelInteraction\Favorite\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testScopeWhereNotFavoritedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -151,5 +150,15 @@ final class FavoriteableTest extends TestCase
             $modelClass::query()->whereNotFavoritedBy($user)->count()
         );
         $this->assertSame($modelClass::query()->count(), $modelClass::query()->whereNotFavoritedBy($other)->count());
+    }
+
+    /**
+     * @return \Iterator<array<class-string<\LaravelInteraction\Favorite\Tests\Models\Channel|\LaravelInteraction\Favorite\Tests\Models\User>>>
+     */
+    public static function provideModelClasses(): \Iterator
+    {
+        yield [Channel::class];
+
+        yield [User::class];
     }
 }
